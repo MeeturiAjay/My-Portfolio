@@ -19,12 +19,6 @@ class _AboutMeState extends State<AboutMe> with TickerProviderStateMixin {
   bool _isVisible = false;
 
   @override
-  void initState() {
-    super.initState();
-
-  }
-
-  @override
   Widget build(BuildContext context) {
     final Size size = MediaQuery.of(context).size;
     return Container(
@@ -87,10 +81,10 @@ class _AboutMeState extends State<AboutMe> with TickerProviderStateMixin {
                       child: ClipRRect(
                         borderRadius: BorderRadius.circular(90.0),
                         child: Image.asset(
-                        AppAssets.profile1,
-                        width: 500.0,
-                        height: 430.0,
-                      ),
+                          AppAssets.profile1,
+                          width: 500.0,
+                          height: 430.0,
+                        ),
                       ),
                     ),
                   ),
@@ -144,11 +138,6 @@ class _AboutMeState extends State<AboutMe> with TickerProviderStateMixin {
                             ),
                           ),
                         ),
-                        // duration: Duration(milliseconds: _isVisible ? 2000 : 0),
-                        // child: AppButtons.buildMaterialButton(
-                        //   onTap: () {},
-                        //   buttonName: "Read More",
-                        // ),
                       ),
                     ],
                   ),

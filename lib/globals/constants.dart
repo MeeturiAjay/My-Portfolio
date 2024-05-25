@@ -1,10 +1,10 @@
-import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 
-class Constants{
-  static SizedBox sizedBox({height, width}){
+class Constants {
+  static SizedBox sizedBox({double? width, double? height}) {
     return SizedBox(
-      height: height,
       width: width,
+      height: height,
     );
   }
 }
