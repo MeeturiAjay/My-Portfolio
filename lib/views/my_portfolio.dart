@@ -1,7 +1,6 @@
 import 'package:animate_do/animate_do.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/painting.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import '../globals/app_assets.dart';
 import '../globals/app_buttons.dart';
@@ -10,15 +9,19 @@ import '../globals/appcolors.dart';
 import '../globals/constants.dart';
 
 class MyPortfolio extends StatefulWidget {
-  const MyPortfolio({super.key});
+  const MyPortfolio({Key? key}) : super(key: key);
 
   @override
   State<MyPortfolio> createState() => _MyPortfolioState();
 }
 
 class _MyPortfolioState extends State<MyPortfolio> {
-
-  bool ischurn = false, isfraud = false, ismovie = false, issenti = false, issales = false, isimage = false;
+  bool ischurn = false,
+      isfraud = false,
+      ismovie = false,
+      issenti = false,
+      issales = false,
+      isimage = false;
 
   @override
   Widget build(BuildContext context) {
@@ -61,9 +64,9 @@ class _MyPortfolioState extends State<MyPortfolio> {
                 },
                 hoverColor: Colors.white,
                 child: buildAnimatedContainer(
-                    title: """Customer Churn""",
-                    asset: AppAssets.churn,
-                    hover: ischurn
+                  title: """Customer Churn""",
+                  asset: AppAssets.churn,
+                  hover: ischurn,
                 ),
               ),
               Constants.sizedBox(width: 35),
@@ -76,9 +79,9 @@ class _MyPortfolioState extends State<MyPortfolio> {
                 },
                 hoverColor: Colors.white,
                 child: buildAnimatedContainer(
-                    title: "Fraud Detection System",
-                    asset: AppAssets.fraud,
-                    hover: isfraud
+                  title: "Fraud Detection System",
+                  asset: AppAssets.fraud,
+                  hover: isfraud,
                 ),
               ),
               Constants.sizedBox(width: 35),
@@ -90,9 +93,10 @@ class _MyPortfolioState extends State<MyPortfolio> {
                   });
                 },
                 hoverColor: Colors.white,
-                child: buildAnimatedContainer(title: """Movie Recommendation""",
-                    asset: AppAssets.movie,
-                    hover: ismovie
+                child: buildAnimatedContainer(
+                  title: """Movie Recommendation""",
+                  asset: AppAssets.movie,
+                  hover: ismovie,
                 ),
               ),
             ],
@@ -109,9 +113,10 @@ class _MyPortfolioState extends State<MyPortfolio> {
                   });
                 },
                 hoverColor: Colors.white,
-                child: buildAnimatedContainer(title: """Sentiment Analysis""",
-                    asset: AppAssets.senti,
-                    hover: issenti
+                child: buildAnimatedContainer(
+                  title: """Sentiment Analysis""",
+                  asset: AppAssets.senti,
+                  hover: issenti,
                 ),
               ),
               Constants.sizedBox(width: 35),
@@ -123,9 +128,13 @@ class _MyPortfolioState extends State<MyPortfolio> {
                   });
                 },
                 hoverColor: Colors.white,
-                child: buildAnimatedContainer(title: """Sales Forecasting""",
-                    asset: AppAssets.sales,
-                    hover: issales
+                child: buildAnimatedContainer(
+                  title: """Olympics Data Analysis""",
+                  asset: AppAssets.sales,
+                  hover: issales,
+                  webUrl:
+                  'https://olympic-data-dive-uncovering-trends-and-patterns-bgjljs7yazeaf.streamlit.app/',
+                  GitUrl: 'https://github.com/MeeturiAjay/Olympic-Data-Dive-Uncovering-Trends-and-Patterns'
                 ),
               ),
               Constants.sizedBox(width: 35),
@@ -137,9 +146,10 @@ class _MyPortfolioState extends State<MyPortfolio> {
                   });
                 },
                 hoverColor: Colors.white,
-                child: buildAnimatedContainer(title: """Image Classification""",
-                    asset: AppAssets.classify,
-                    hover: isimage
+                child: buildAnimatedContainer(
+                  title: """Image Classification""",
+                  asset: AppAssets.classify,
+                  hover: isimage,
                 ),
               )
             ],
@@ -150,25 +160,33 @@ class _MyPortfolioState extends State<MyPortfolio> {
   }
 }
 
-
-AnimatedContainer buildAnimatedContainer(
-    {required String title, required String asset, required bool hover}) {
+AnimatedContainer buildAnimatedContainer({
+  required String title,
+  required String asset,
+  required bool hover,
+  String? webUrl,
+  String? GitUrl,
+}) {
   return AnimatedContainer(
     alignment: Alignment.center,
     padding: const EdgeInsets.symmetric(horizontal: 18.0, vertical: 25.0),
     decoration: BoxDecoration(
-        border: hover? Border.all(color: AppColors.themeColor, width: 3.0) : null,
-        color: AppColors.bgcolor2,
-        borderRadius: BorderRadius.circular(30),
-        boxShadow: const [
-          BoxShadow(
-              color: Colors.black26,
-              spreadRadius: 4.0,
-              blurRadius: 4.5,
-              offset: Offset(3.0, 4.5))
-        ]),
-    width: hover? 320.0 : 300.0,
-    height: hover? 290.0 : 270.0,
+      border: hover
+          ? Border.all(color: AppColors.themeColor, width: 3.0)
+          : null,
+      color: AppColors.bgcolor2,
+      borderRadius: BorderRadius.circular(30),
+      boxShadow: const [
+        BoxShadow(
+          color: Colors.black26,
+          spreadRadius: 4.0,
+          blurRadius: 4.5,
+          offset: Offset(3.0, 4.5),
+        )
+      ],
+    ),
+    width: hover ? 320.0 : 300.0,
+    height: hover ? 290.0 : 270.0,
     duration: const Duration(milliseconds: 600),
     child: Column(
       children: [
@@ -179,35 +197,11 @@ AnimatedContainer buildAnimatedContainer(
         ),
         Text(
           title,
-          style: AppTextStyles.montserratStyle(color: Colors.white, fontSize: 18.0),
-        ),
-        // Constants.sizedBox(height: 10),
-        // Text(
-        //   "driven Machine Learning Engineer, I offer a range of services to help businesses harness the power of artificial intelligence and machine learning.",
-        //   style: AppTextStyles.normalStyle(),
-        //   textAlign: TextAlign.center,
-        // ),
-        Constants.sizedBox(height: 10),
-      Container(
-        decoration: BoxDecoration(
-          shape: BoxShape.rectangle,
-          boxShadow: [
-            BoxShadow(
-              color: AppColors.themeColor.withOpacity(1),
-              spreadRadius: 2.0,
-              blurRadius: 10.0,
-              offset: const Offset(0.5, 0.0),
-            ),
-          ],
-        ),
-        child: ClipRRect(
-          borderRadius: BorderRadius.circular(8.0),
-          child: AppButtons.buildMaterialButton(
-            onTap: () {},
-            buttonName: "Github",
+          style: AppTextStyles.montserratStyle(
+            color: Colors.white,
+            fontSize: 18.0,
           ),
         ),
-      ),
         Constants.sizedBox(height: 10),
         Container(
           decoration: BoxDecoration(
@@ -224,8 +218,45 @@ AnimatedContainer buildAnimatedContainer(
           child: ClipRRect(
             borderRadius: BorderRadius.circular(8.0),
             child: AppButtons.buildMaterialButton(
-              onTap: () {},
-              buttonName: "Wanna try!",
+              onTap: GitUrl != null
+                  ? () async {
+                if (await canLaunch(GitUrl)) {
+                  await launch(GitUrl);
+                } else {
+                  throw 'Could not launch $webUrl';
+                }
+              }
+                  : () {}, // Changed here
+              buttonName: "Github",
+            ),
+          ),
+        ),
+        Constants.sizedBox(height: 10),
+        Container(
+          decoration: BoxDecoration(
+            shape: BoxShape.rectangle,
+            boxShadow: [
+              BoxShadow(
+                color: AppColors.themeColor.withOpacity(1),
+                spreadRadius: 2.0,
+                blurRadius: 10.0,
+                offset: const Offset(0.5, 0.0),
+              ),
+            ],
+          ),
+          child: ClipRRect(
+            borderRadius: BorderRadius.circular(8.0),
+            child: AppButtons.buildMaterialButton(
+              onTap: webUrl != null
+                  ? () async {
+                if (await canLaunch(webUrl)) {
+                  await launch(webUrl);
+                } else {
+                  throw 'Could not launch $webUrl';
+                }
+              }
+                  : () {}, // Changed here
+              buttonName: "Have a look!",
             ),
           ),
         ),

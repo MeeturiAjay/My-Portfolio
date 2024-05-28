@@ -16,4 +16,5 @@ class AppAssets {
   static String senti = 'assets/images/sentiment-analysis.png';
   static String sales = 'assets/images/forecasting.png';
   static String classify = 'assets/images/data-classification.png';
+  static String olympics = 'assets/images/Olympics_Analysis_logo.png';
 }
